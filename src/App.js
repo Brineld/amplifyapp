@@ -1,8 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
 import './App.css';
 
-function App() {
+class App extends Component {
+  constructor(props){
+    super(props){
+      this.state={
+        posts: []
+      }
+    }
+  componentDidMount(){
+    const url=
+      "https://jsonplaceholder.typicode.com/posts";
+    fetch(url)
+    .then(response=> response.json())
+    .then(json=>this.setState({posts:json}))
+  }
+ render(){
   return (
     <div className="App">
       <header className="App-header">
@@ -13,5 +26,5 @@ function App() {
     </div>
   );
 }
-
+}
 export default App;
